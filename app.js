@@ -22,6 +22,6 @@ app.use('/que/poultry', poultrylog)
 app.use('/que/seafood', seafoodlog)
 app.use('/que/vegetable', vegetablelog)
 
-app.listen(process.ent.PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log(`server is listening on port ${process.env.PORT}`)
 })
