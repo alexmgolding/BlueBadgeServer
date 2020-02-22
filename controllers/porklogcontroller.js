@@ -6,16 +6,15 @@ let PorkModel = sequelize.import('../models/pork')
 //Get all recipes
 router.get('/getall', function (req, res) {
     let userid = req.user.id
-    PorkModel.findAll({
-        where: { owner: userid }
-    }).then(
-        function findAllSuccess(data) {
-            res.json(data)
-        },
-        function findAllError(err) {
-            res.send(500, err.message)
-        }
-    )
+    PorkModel.findAll()
+        .then(
+            function findAllSuccess(data) {
+                res.json(data)
+            },
+            function findAllError(err) {
+                res.send(500, err.message)
+            }
+        )
 })
 
 //Pork recipe submission
