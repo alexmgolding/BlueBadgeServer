@@ -30,7 +30,7 @@ router.post('/createuser', function (req, res) {
     )
 })
 
-//Signing in existing User - Password validation go here?
+//Signing in existing User
 router.post('/signin', function (req, res) {
     let email = req.body.user.username
     let password = req.body.user.password
@@ -41,7 +41,7 @@ router.post('/signin', function (req, res) {
         user ? comparePasswords(user) : res.send('User not found in database')
         function comparePasswords(user) {
             bcrypt.compare(password, user.passwordhash, function (err, matches) {
-                matches ? generateToken(user) : res.send('Incorrect Password')
+                matches ? generateToken(user) : res.json({ error: 'Incorrect Password' })
             })
         }
         function generateToken(user) {
